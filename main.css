@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pridi&display=swap');
+
+body{
+    background: linear-gradient(to right,  #5c8194 0%,#e2dfd8 70%,#e2dfd8 30%,#7d847c 100%);  
+    font-family: 'Philosopher', sans-serif;
+}
+
+#myScene {
+    width: 100%;
+    height: 65vh;
+}
+
+.lightDiv{
+    z-index: 999;
+}
+
+.light1{
+    display:block; 
+    float: right; 
+    margin-right:30px !important; 
+    margin-bottom: 0%; 
+    padding-bottom: 0%; 
+    max-width: 120px; 
+}
+
+.chandalier1{
+    display:block; 
+    float: right; 
+    margin-right:20%; 
+    margin-bottom: 0%; 
+    padding-bottom: 0%; 
+    max-width: 150px;
+}
+
+
+
+.banner{
+    padding-top: 0px; 
+    margin-top:0%
+}
+
+.img{
+    width: 20%;
+    height: 25%;
+    padding: 1px;
+    transition: all;
+}
+
+.img:hover{
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.colorPicker {
+    display: inline-block;
+    margin: 0 10px
+}
+
+h5{
+    font-family: 'Philosopher', sans-serif;
+}
+
+.infoFont{
+    font-family: 'Rubik Bubbles', cursive;
+}
+
+.innerInfoFont{
+    font-family: 'Pridi', serif;
+}
+
+#basicInfo a{
+    color: #F4E285;
+}
+
+li{
+    padding: 5px;
+}
+
+.text-boader {
+	font-size: 20px;
+    color: white;
+	text-shadow: -1px 1px 2px rgb(0, 0, 0),
+				  1px 2px 6px #000,
+				  1px -1px 0 #000,
+				  -1px -1px 0 #000;
+}
+
+.contact-image{
+    width: 40%; 
+    display: flex; 
+    justify-content: center; 
+    border-radius: 50%; 
+    border: 5px solid #b2bd52;
+    margin: auto;
+}
+
+/*  */
+  
+  .button {
+    display: inline-block;
+    background: #b2bd52;
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    -webkit-transition: all ease-in-out 300ms;
+    transition: all ease-in-out 300ms;
+  }
+  .button:hover {
+    box-shadow: 0px 37px 20px -20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translate(0px, -10px) scale(1.02);
+            transform: translate(0px, -10px) scale(1.02);
+  }
+  

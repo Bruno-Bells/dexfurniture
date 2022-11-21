@@ -1,0 +1,11 @@
+Model Information:
+* title:	Couch Sofa
+* source:	https://sketchfab.com/3d-models/couch-sofa-5cc2943b927e4d9a9eef2714797de007
+* author:	Pixion (https://sketchfab.com/pixion)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Couch Sofa" (https://sketchfab.com/3d-models/couch-sofa-5cc2943b927e4d9a9eef2714797de007) by Pixion (https://sketchfab.com/pixion) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

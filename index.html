@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython_stdlib.js"></script>
+    <script src="https://unpkg.com/three@0.145.0/build/three.js"></script>
+    <script src="https://www.pyweb3d.org/pyweb3d/v1.0.0/pyweb3d.brython.js"></script>
+    <link rel="icon" type="image/png" href="assets/logo/favicon/couch.png"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Product display - PyWeb3D</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KGZHHYTBPW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KGZHHYTBPW');
+    </script>
+</head>
+<body onload="brython(1)">
+    <script src="plugins/loaders/GLTFLoader.js"></script>
+    <script src="plugins/controls/OrbitControls.js"></script>
+    <script src="plugins/loaders/RGBELoader.js"></script>
+
+    <!-- Navbar  -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+      <div class="container">
+        <div id="brandinfo1">
+          <a class="navbar-brand" href="#" style="padding-bottom: 0%; margin-bottom:0%">
+              <img style="padding-bottom: 10px;" src="assets/logo/couch.svg" alt="Logo" width="40" height="34" class="d-inline-block align-text-top">
+              DexFurniture
+            </a>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="brandinfo">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <!-- <a class="nav-link active" aria-current="page" href="#">Contact Me</a> -->
+                <button type="button" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" class="btn btn-light">Contact Me</button>
+              </li>
+              <li class="nav-item">
+                <button type="button" data-bs-toggle="modal" href="#exampleModalToggle" role="button" class="btn btn-light">Free Download</button>
+              </li>
+            </ul>
+        </div>
+
+      </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="mx-auto"></div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+              </svg></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="lightDiv">
+        <img class="light1" src="assets/light1.png" alt="">
+        <img class="chandalier1" src="assets/chandalier1.png" alt="">
+    </div>
+
+    <!-- SideBar Panel -->
+    <!--  -->
+    <div style="width: 45vw; background-color: rgba(255, 255, 255, 0.2);" class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel"></h5>
+        <button style="right: 0px; margin-left: 90%;" type="button" id="show_basicInfo" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <br>
+      </div>
+      <div class="offcanvas-body">
+        <div class="card-body">
+          <h3  class="card-title text-center p-2 infoFont">Materials Palette</h3>
+          <div class="row">
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Base Material</h5>
+                <img class="img shadow rounded Base_texture" src="assets/models/couch_textures/Base/texture1.jpg" alt="Base texture1">
+                <img class="img shadow rounded Base_texture" src="assets/models/couch_textures/Base/texture2.jpg" alt="Base texture2">
+                <img class="img shadow rounded Base_texture" src="assets/models/couch_textures/Base/texture3.jpg" alt="Base texture3">
+                <img class="img shadow rounded Base_texture" src="assets/models/couch_textures/Base/texture4.jpg" alt="Base texture4">
+                <img class="img shadow rounded Base_texture" src="assets/models/couch_textures/Base/texture5.jpg" alt="Base texture5">
+                <img class="img shadow rounded Base_texture" src="assets/models/couch_textures/Base/texture6.jpg" alt="Base texture6">
+                <img class="img shadow rounded Base_texture" src="assets/models/couch_textures/Base/texture7.jpg" alt="Base texture7">
+                <img class="img shadow rounded Base_texture" src="assets/models/couch_textures/Base/texture8.jpg" alt="Base texture8">
+              </div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                  <h5 class="card-title text-center p-2">Feet Material</h5>
+                  <div style="display:flex; justify-content:center">
+                    <span  class="colorPicker text-center p-2"><input id="feet-color" type="color" value="#393939"></input><br/>Feet Color</span>
+                  </div>
+              </div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Side Frame</h5>
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture1.jpg" alt="Frame texture1">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture2.jpg" alt="Frame texture2">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture3.jpg" alt="Frame texture3">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture4.jpg" alt="Frame texture4">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture5.jpg" alt="Frame texture5">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture6.jpg" alt="Frame texture6">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture7.jpg" alt="Frame texture7">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture8.jpg" alt="Frame texture8">
+              </div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Seat Material</h5>
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture1.jpg" alt="Seat texture1">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture2.jpg" alt="Seat texture2">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture3.jpg" alt="Seat texture3">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture4.jpg" alt="Seat texture4">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture5.jpg" alt="Seat texture5">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture6.jpg" alt="Seat texture6">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture7.jpg" alt="Seat texture7">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture8.jpg" alt="Seat texture8">
+              </div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Side Strip</h5>
+                <div style="display:flex; justify-content:center">
+                  <span  class="colorPicker text-center p-2"><input id="side-strip-color" type="color" value="#F4E285"></input><br/>Feet Color</span>
+                </div>
+              </div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4"></div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Back Pillow 1</h5>
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture1.jpg" alt="Back3 texture1">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture2.jpg" alt="Back3 texture2">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture3.jpg" alt="Back3 texture3">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture4.jpg" alt="Back3 texture4">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture5.jpg" alt="Back3 texture5">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture6.jpg" alt="Back3 texture6">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture7.jpg" alt="Back3 texture7">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture8.jpg" alt="Back3 texture8">
+              </div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Back Pillow 2</h5>
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture1.jpg" alt="Back1 texture1">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture2.jpg" alt="Back1 texture2">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture3.jpg" alt="Back1 texture3">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture4.jpg" alt="Back1 texture4">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture5.jpg" alt="Back1 texture5">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture6.jpg" alt="Back1 texture6">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture7.jpg" alt="Back1 texture7">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture8.jpg" alt="Back1 texture8">
+              </div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Back Pillow 3</h5>
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture1.jpg" alt="Back2 texture1">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture2.jpg" alt="Back2 texture2">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture3.jpg" alt="Back2 texture3">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture4.jpg" alt="Back2 texture4">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture5.jpg" alt="Back2 texture5">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture6.jpg" alt="Back2 texture6">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture7.jpg" alt="Back2 texture7">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture8.jpg" alt="Back2 texture8">
+              </div>
+
+              
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Throw Pillow 1</h5>
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture1.jpg" alt="Throw1 texture1">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture2.jpg" alt="Throw1 texture2">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture3.jpg" alt="Throw1 texture3">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture4.jpg" alt="Throw1 texture4">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture5.jpg" alt="Throw1 texture5">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture6.jpg" alt="Throw1 texture6">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture7.jpg" alt="Throw1 texture7">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture8.jpg" alt="Throw1 texture8">
+              </div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Throw Pillow 2</h5>
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture1.jpg" alt="Throw3 texture1">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture2.jpg" alt="Throw3 texture2">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture3.jpg" alt="Throw3 texture3">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture4.jpg" alt="Throw3 texture4">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture5.jpg" alt="Throw3 texture5">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture6.jpg" alt="Throw3 texture6">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture7.jpg" alt="Throw3 texture7">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture8.jpg" alt="Throw3 texture8">
+              </div>
+
+              <div class="p-2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <h5 class="card-title text-center p-2">Throw Pillow 3</h5>
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture1.jpg" alt="Throw2 texture1">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture2.jpg" alt="Throw2 texture2">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture3.jpg" alt="Throw2 texture3">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture4.jpg" alt="Throw2 texture4">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture5.jpg" alt="Throw2 texture5">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture6.jpg" alt="Throw2 texture6">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture7.jpg" alt="Throw2 texture7">
+                <img class="img shadow rounded" src="assets/models/couch_textures/Base/texture8.jpg" alt="Throw2 texture8">
+              </div>
+
+              
+
+          </div>
+
+          <div class="text-center">
+            <!-- Animated button -->
+            <button class="button text-boader innerInfoFont" style="background-color: #5a91c9; padding: 10px;" id="start_spin">Spin Couch</button>
+            <button class="button text-boader innerInfoFont" style="background-color: #5a91c9; padding: 10px;" id="stop_spin">Stop Spin</button>
+        </div>
+          
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+    <!-- Banner Image  -->
+    <div class="banner-image w-100 banner  d-flex justify-content-center align-items-center">
+      <div class="container-fluid text-center">
+        <div class="row ">
+            <div class="col-sm-5 ">
+              <div id="basicInfo">
+                <h1>Built with <strong>PyWeb3D</strong></h1>
+                <div class="container ps-md-2 pe-md-2 innerInfoFont">
+                  <h4><a href="https://www.pyweb3d.org/" target="_blank">PyWeb3D</a> is a Python documentation of <a href="https://threejs.org/" target="_blank">three.js</a>.<br> 
+                    <h5 class="innerInfoFont">It is a free and Open Source python library for displaying 3D contents on the web.</h5></h4>
+                    <p class="innerInfoFont">If you like this project, please consider helping out. All contributions are welcome as well as donations to <a href="https://patreon.com/brunoodinukweze" target="_blank">Patreon</a> or in Cryto <br>
+                    BTC: bc1qr4e3k6gpk5h82nduttzfq6lt5pnlkxpdjs98rp <br>
+                    DogeCoin: D7pr1DgNBEV5m5DrHNULFMcE1so5MvA945 <br>
+                    BNB(Smart Chain): 0xa12E5b6370aDc7E714Fb8D901dA2631f22eDb0a5</p>
+                  <p>Couch from <a href="https://sketchfab.com/3d-models/couch-sofa-5cc2943b927e4d9a9eef2714797de007" target="_blank" rel="noopener noreferrer">sketchfab</a></p>
+                </div>
+                <button id="basicInfo_btn" class="button innerInfoFont text-boader" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Open Couch Materials Palette</button>
+              </div>
+            </div>
+
+            <div class="col-sm-7" >
+            <div id="myScene">
+
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header  border-0">
+            <h5 class="modal-title text-center" id="exampleModalToggleLabel">Download Source Code for Free</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h2 class="innerInfoFont p-2 text-center">Support PyWeb3D Project</h2>
+            <p class="innerInfoFont">If you like this project, please consider helping out. All contributions are welcome as well as donations to <a href="https://patreon.com/brunoodinukweze" target="_blank">Patreon</a> or in Cryto <br>
+             <strong>BTC:</strong>  bc1qr4e3k6gpk5h82nduttzfq6lt5pnlkxpdjs98rp <br>
+             <strong>DogeCoin:</strong> D7pr1DgNBEV5m5DrHNULFMcE1so5MvA945 <br>
+             <strong>BNB(Smart Chain):</strong> 0xa12E5b6370aDc7E714Fb8D901dA2631f22eDb0a5</p>
+          </div>
+          <div class="modal-footer  border-0">
+            <a class="btn btn-primary" href="https://github.com/Bruno-Odinukweze/dex/archive/refs/heads/main.zip" >Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header text-center border-0">
+            <h5 class="modal-title w-100" id="exampleModalToggleLabel2">Reach Out</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="assets/contact/Bruno.jpg" class="contact-image" alt="">
+            <h4 class="text-center" style="padding-top: 10px;">Bruno Odinukweze</h4>
+            <p class="text-center">Email: <a href="mailto:bruno.researchs@gmail.com">bruno.researchs@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <script type="text/python" src="main.py"></script>
+    <script type="text/python">
+      from browser import document
+    </script>
+
+    <!-- Google Analytics -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCDxqVOAXddtwrN6tnyZNQAjAGYlZP5sjw",
+        authDomain: "pyweb3d-couch-project.firebaseapp.com",
+        projectId: "pyweb3d-couch-project",
+        storageBucket: "pyweb3d-couch-project.appspot.com",
+        messagingSenderId: "237414999690",
+        appId: "1:237414999690:web:30b769ded76965c61d2f73",
+        measurementId: "G-KGZHHYTBPW"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+
+</body>
+</html>
