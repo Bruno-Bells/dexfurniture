@@ -10,4 +10,4 @@ If you like this project, please consider helping out. All contributions are wel
 `DogeCoin: D7pr1DgNBEV5m5DrHNULFMcE1so5MvA945`\
 `BNB(Smart Chain): 0xa12E5b6370aDc7E714Fb8D901dA2631f22eDb0a5`
 
-![alt text](https://bruno-odinukweze.github.io/dexfurniture/assets/screenshots/palette.png)
+![alt text](https://bruno-bells.github.io/dexfurniture/assets/screenshots/palette.png)
